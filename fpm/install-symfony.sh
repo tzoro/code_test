@@ -1,0 +1,1 @@
+cd / && curl -sS https://get.symfony.com/cli/installer | bash
