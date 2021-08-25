@@ -43,9 +43,9 @@ class TestController extends AbstractController
 
       foreach ($result as $key => $value) {
 
-        if (str_contains($value['title'], 'rocks')) {
+        if (str_contains($value['title'], $term . ' rocks')) {
           $p_count++;
-        } elseif (str_contains($value['title'], 'sucks')) {
+        } elseif (str_contains($value['title'], $term . ' sucks')) {
           $n_count++;
         }
 
