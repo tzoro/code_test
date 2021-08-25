@@ -32,6 +32,11 @@ class Repofetch
      */
     private $t_score;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $term;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Repofetch
     public function setTScore(float $t_score): self
     {
         $this->t_score = $t_score;
+
+        return $this;
+    }
+
+    public function getTerm(): ?string
+    {
+        return $this->term;
+    }
+
+    public function setTerm(?string $term): self
+    {
+        $this->term = $term;
 
         return $this;
     }
