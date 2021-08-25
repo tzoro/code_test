@@ -31,6 +31,19 @@ class TestController extends AbstractController
         return $response;
       }
 
+      $repository = $this->getDoctrine()->getRepository(Repofetch::class);
+      $cached = $repository->findOneBy([
+        'term' => $term
+      ]);
+
+      if(!is_null($cached)) {
+        $response = new JsonResponse();
+        $response->setData([
+          'term'  => $term,
+          'score' => $cached->getTScore()
+        ]);
+      }
+
       $t_count = (float) 0;
       $p_count = (float) 0;
       $n_count = (float) 0;
@@ -73,7 +86,7 @@ class TestController extends AbstractController
 
       $response = new JsonResponse();
       $response->setData([
-        'term'  => 'query',
+        'term'  => $term,
         'score' => $t_score
       ]);
 
