@@ -22,6 +22,11 @@ class Testentity
      */
     private $tfield;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $term;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +40,18 @@ class Testentity
     public function setTfield(?string $tfield): self
     {
         $this->tfield = $tfield;
+
+        return $this;
+    }
+
+    public function getTerm(): ?string
+    {
+        return $this->term;
+    }
+
+    public function setTerm(?string $term): self
+    {
+        $this->term = $term;
 
         return $this;
     }

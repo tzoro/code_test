@@ -67,13 +67,14 @@ class TestController extends AbstractController
       $repo->setUName('tzoro');
       $repo->setURepo('code_test');
       $repo->setTScore($t_score);
+      $repo->setTerm($term);
       $entityManager->persist($repo);
       $entityManager->flush();
 
       $response = new JsonResponse();
       $response->setData([
-          'term'  => 'query',
-          'score' => $t_score
+        'term'  => 'query',
+        'score' => $t_score
       ]);
 
       return $response;
