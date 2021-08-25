@@ -190,6 +190,15 @@
             'reference' => '006aa5d32f887a4db4353b13b5b5095613e0611f',
             'dev_requirement' => false,
         ),
+        'kint-php/kint' => array(
+            'pretty_version' => '3.3',
+            'version' => '3.3.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../kint-php/kint',
+            'aliases' => array(),
+            'reference' => '335ac1bcaf04d87df70d8aa51e8887ba2c6d203b',
+            'dev_requirement' => true,
+        ),
         'laminas/laminas-code' => array(
             'pretty_version' => '4.4.2',
             'version' => '4.4.2.0',
@@ -218,6 +227,18 @@
             'dev_requirement' => false,
             'replaced' => array(
                 0 => '^2.1',
+            ),
+        ),
+        'php-http/async-client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '*',
+            ),
+        ),
+        'php-http/client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '*',
             ),
         ),
         'psr/cache' => array(
@@ -260,6 +281,12 @@
             'dev_requirement' => false,
         ),
         'psr/event-dispatcher-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.0',
+            ),
+        ),
+        'psr/http-client-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
                 0 => '1.0',
@@ -460,6 +487,15 @@
             'reference' => '2c5ed14a5992a2d04dfdb238a5f9589bab0a68d8',
             'dev_requirement' => false,
         ),
+        'symfony/http-client' => array(
+            'pretty_version' => 'v5.3.4',
+            'version' => '5.3.4.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/http-client',
+            'aliases' => array(),
+            'reference' => '67c177d4df8601d9a71f9d615c52171c98d22d74',
+            'dev_requirement' => false,
+        ),
         'symfony/http-client-contracts' => array(
             'pretty_version' => 'v2.4.0',
             'version' => '2.4.0.0',
@@ -468,6 +504,12 @@
             'aliases' => array(),
             'reference' => '7e82f6084d7cae521a75ef2cb5c9457bbda785f4',
             'dev_requirement' => false,
+        ),
+        'symfony/http-client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '2.4',
+            ),
         ),
         'symfony/http-foundation' => array(
             'pretty_version' => 'v5.3.6',
