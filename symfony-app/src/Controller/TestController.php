@@ -6,13 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
+use App\Service\GitHubHttpRepoFetcher;
+use App\Entity\Repofetch;
 
 class TestController extends AbstractController
 {
     /**
      * @Route("/test", name="test")
      */
-    public function index(): Response
+    public function index(GitHubHttpRepoFetcher $fetcher): Response
     {
       $t_count = (float) 0;
       $p_count = (float) 0;
@@ -22,13 +24,9 @@ class TestController extends AbstractController
       $t_score = (float) 0;
       $diff    = (float) 0;
 
-      $client = HttpClient::create();
+      $result = $fetcher->fetch('tzoro', 'code_test');
 
-      $response = $client->request('GET', 'https://api.github.com/repos/tzoro/code_test/issues', [
-          'auth_basic' => ['tzoro', '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'],
-      ])->toArray();
-
-      foreach ($response as $key => $value) {
+      foreach ($result as $key => $value) {
 
         if (str_contains($value['title'], 'rocks')) {
           $p_count++;
@@ -48,6 +46,14 @@ class TestController extends AbstractController
         $t_score = $diff / $p_score;
 
       }
+
+      $entityManager = $this->getDoctrine()->getManager();
+      $repo = new Repofetch();
+      $repo->setUName('tzoro');
+      $repo->setURepo('code_test');
+      $repo->setTScore($t_score);
+      $entityManager->persist($repo);
+      $entityManager->flush();
 
       return $this->render('test/index.html.twig', [
           'controller_name' => 'TestController',
