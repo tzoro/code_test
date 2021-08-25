@@ -10,9 +10,10 @@ class GitHubHttpRepoFetcher
   public function fetch( string $user, string $repo ): array
   {
     $client = HttpClient::create();
+    $token = $this->getParameter('GITHUB_TOKEN');
 
     $response = $client->request('GET', 'https://api.github.com/repos/' . $user . '/' . $repo . '/issues', [
-      'auth_basic' => ['tzoro', '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'],
+      'auth_basic' => ['tzoro', $token],
     ])->toArray();
 
     return $response;
