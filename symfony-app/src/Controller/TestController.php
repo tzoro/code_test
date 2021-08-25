@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
 use App\Service\GitHubHttpRepoFetcher;
@@ -14,7 +14,7 @@ class TestController extends AbstractController
     /**
      * @Route("/test", name="test")
      */
-    public function index(GitHubHttpRepoFetcher $fetcher): Response
+    public function index(GitHubHttpRepoFetcher $fetcher): JsonResponse
     {
       $t_count = (float) 0;
       $p_count = (float) 0;
@@ -55,8 +55,13 @@ class TestController extends AbstractController
       $entityManager->persist($repo);
       $entityManager->flush();
 
-      return $this->render('test/index.html.twig', [
-          'controller_name' => 'TestController',
+      $response = new JsonResponse();
+      $response->setData([
+          'term'  => 'query',
+          'score' => $t_score
       ]);
+
+      return $response;
+
     }
 }
