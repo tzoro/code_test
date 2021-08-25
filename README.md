@@ -1,4 +1,4 @@
-# Symfony 5, Nginx, PHP 7 bitnami/php-fpm:latest docker container
+# Symfony 5, Nginx, PHP 7 bitnami/php-fpm:7.4-prod-debian-10 docker container
 
 ## Steps
 Build images
